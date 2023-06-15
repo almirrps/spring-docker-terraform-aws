@@ -1,15 +1,15 @@
 #arquivo de configuracoes local/default
 
-#configuracao de porta
+#port config
 server:
   port: 8090
 
-#define qual aplicacao sera rodada
+#define which application will executed
 spring:
   application:
     name: "contactbook"
 
-  #configuracoes de banco de dados
+  #database configs
   datasource:
     url: jdbc:postgresql://localhost:15432/contactbook?currentSchema=public
     username: "admin"
@@ -25,16 +25,21 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
 
-  #configuracao do flyway
+  #flyway config
   flyway:
     locations: "db/migration"
     baseline-on-migrate: false
 
-#configuracao swagger
+#devtools config
+  devtools:
+    restart:
+      enabled: true
+
+#swagger config
 springdoc:
   swagger-ui:
     path: "/contactbook/swagger-ui.html"
 
-#endpoint viacep
+#viacep url endpoint
 viacep:
   endpoint: "viacep.com.br/ws"
