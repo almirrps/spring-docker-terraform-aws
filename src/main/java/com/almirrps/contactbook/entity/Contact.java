@@ -2,30 +2,29 @@ package com.almirrps.contactbook.entity;
 
 import com.almirrps.contactbook.service.client.response.AddressResponse;
 import lombok.*;
+import org.hibernate.Hibernate;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Objects;
 
-@Entity(name = "contact")
+@Entity
 @Table(name = "contact_book_tb")
 @Builder
 @Getter
 @Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 public class Contact {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private String phone;
     private String cep;
     private String logradouro;
     private Integer numero;
-    private String complemento;
     private String bairro;
     private String cidade;
     private String estado;
@@ -33,9 +32,21 @@ public class Contact {
     public void setAddress(AddressResponse address) {
         this.logradouro = address.getLogradouro();
         this.bairro = address.getBairro();
-        this.complemento = address.getComplemento();
         this.cidade = address.getCidade();
         this.estado = address.getEstado();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Contact contact = (Contact) o;
+        return id != null && Objects.equals(id, contact.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 
 }

@@ -1,38 +1,46 @@
-#arquivo de configurações local/default
+#arquivo de configuracoes local/default
 
-#configuração de porta
+#port config
 server:
   port: 8090
 
-#define qual arquivo será rodado com base no profile
+#define which application will executed
 spring:
-  config:
-    activate:
-      on-profile:
-        - local
+  application:
+    name: "contactbook"
 
-  #configurações de banco de dados
+  #database configs - connect to database into the Docker
   datasource:
-    url: "jdbc:postgresql://localhost:15432/contactBook?currentSchema=public"
+    url: jdbc:postgresql://localhost:15432/contactbook?currentSchema=public
     username: "admin"
     password: "admin"
     driver-class-name: "org.postgresql.Driver"
+    hikari:
+      schema: public
 
+#jpa configs
   jpa:
+    hibernate:
+      ddl-auto: update
     properties:
       hibernate:
-        dialect: "org.hibernate.dialect.PostgreSQLDialect"
+        dialect: org.hibernate.dialect.PostgreSQLDialect
 
-  #configuração do flyway
+  #flyway config - execute all scripts sql from resources/db.migration to database
   flyway:
     locations: "db/migration"
     baseline-on-migrate: false
 
-#configuração swagger
+#devtools config - to automatic compile our app
+  devtools:
+    restart:
+      enabled: true
+
+#swagger config - makes available our API through swagger
 springdoc:
   swagger-ui:
     path: "/contactbook/swagger-ui.html"
 
-#endpoint viacep
+#viacep url endpoint - API used in the ViaCepClient
 viacep:
   endpoint: "viacep.com.br/ws"

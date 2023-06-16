@@ -1,10 +1,13 @@
 package com.almirrps.contactbook.controller.request;
 
 import com.almirrps.contactbook.entity.Contact;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
-@Data
+
+@Getter
+@Setter
+@AllArgsConstructor
+@RequiredArgsConstructor
 @Builder
 public class ContactRequest {
 
@@ -17,7 +20,7 @@ public class ContactRequest {
         return Contact.builder()
                 .name(name)
                 .phone(phone)
-                .cep(cep)
+                .cep(cep.contains("-")? cep.replace("-", ""): cep)
                 .numero(numero)
                 .build();
     }
