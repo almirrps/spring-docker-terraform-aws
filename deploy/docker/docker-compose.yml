@@ -7,7 +7,7 @@ services:
     environment:
       POSTGRES_USER: "admin"
       POSTGRES_PASSWORD: "admin"
-      POSTGRES_DB: "contactbook"
+      POSTGRES_DB: "contactb ook"
       TZ: "America/Sao_Paulo"
     ports:
       - "15432:5432"
