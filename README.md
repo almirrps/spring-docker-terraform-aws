@@ -20,3 +20,11 @@ This level I'm learned how to too:
 
 **Diagram 1**
   <img src=diagram/tutorial-diagram-level-1.jpg>
+
+**Level 2**
+
+This level I'm learned how to:
+- Run a Docker build in my application image
+- Configure my image to docker-compose file
+- Run my image on a docker container
+- Access my application using swagger and postman
