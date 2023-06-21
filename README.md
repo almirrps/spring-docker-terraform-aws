@@ -28,3 +28,7 @@ This level I'm learned how to:
 - Configure my image to docker-compose file
 - Run my image on a docker container
 - Access my application using swagger and postman
+- Upload my api image to dockerhub
+
+**Diagram 2**
+<img src=diagram/tutorial-diagram-level-2.jpg>
