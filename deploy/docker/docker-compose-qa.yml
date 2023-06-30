@@ -12,7 +12,22 @@ services:
     ports:
       - "15432:5432"
     networks:
-      - docker-network
+      - pg-db-network
+    restart: always
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "admin@gmail.com"
+      PGADMIN_DEFAULT_PASSWORD: "admin"
+      TZ: "America/Sao_Paulo"
+    ports:
+      - "16543:80"
+    depends_on:
+      - postgres-db
+    networks:
+      - pg-db-network
     restart: always
 
   contact-book:
@@ -27,9 +42,9 @@ services:
     depends_on:
       - postgres-db
     networks:
-      - docker-network
+      - pg-db-network
     restart: always
 
 networks:
-  docker-network:
+  pg-db-network:
     driver: bridge
