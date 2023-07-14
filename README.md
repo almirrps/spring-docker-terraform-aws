@@ -32,3 +32,19 @@ This level I'm learned how to:
 
 **Diagram 2**
 <img src=diagram/tutorial-diagram-level-2.jpg>
+
+**Level 3**
+
+This level I'm learned how to:
+- Understand AWS basic infraestructure
+- Create IAM user
+- Configure aws cli profile
+- Create terraform files needed
+- Create ssh key pair
+- Configure userdata template file
+- Terraform commands
+- Access ec2 host from local machine
+- Access my api running on ec2 using swagger and postman
+
+**Diagram 3**
+<img src=diagram/tutorial-diagram-level-3.jpg>
