@@ -17,7 +17,6 @@ resource "aws_subnet" "contactbook_subnet_pub_1a" {
   tags = {
     "Name" = "contactbook_subnet_pub_1a"
   }
-
 }
 
 resource "aws_internet_gateway" "contactbook_igw_1a" {
@@ -48,8 +47,8 @@ resource "aws_route_table_association" "contactbook_rtba_pub_1a" {
 }
 
 resource "aws_instance" "contactbook_ec2_inst" {
-  instance_type = "t2.micro"
-  ami           = data.aws_ami.contactbook_server_ami.id
+  instance_type          = "t2.micro"
+  ami                    = data.aws_ami.contactbook_server_ami.id
   key_name               = aws_key_pair.contactbook_key.id
   vpc_security_group_ids = [aws_security_group.contactbook_sg.id]
   subnet_id              = aws_subnet.contactbook_subnet_pub_1a.id
